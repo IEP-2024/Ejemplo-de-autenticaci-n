@@ -14,6 +14,7 @@ class UserController extends Controller
         $u -> name = $request -> post("name");
         $u -> email = $request -> post("email");
         $u -> password = Hash::make($request -> post("password"));
+        $u -> tipo_id = $request -> post("tipo");
 
         $u -> save();
 
@@ -29,8 +30,12 @@ class UserController extends Controller
     }
 
     public function Logout(Request $request){
-        Auth::logout();
-        return redirect("/login")->with("logout",true);
+        if(Auth::user() -> tipo() -> first() -> nombre != "Basico")
+            echo "No te dejo";
+        else{
+            Auth::logout();
+            return redirect("/login")->with("logout",true);
+        }
     }
 
     

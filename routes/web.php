@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Autenticacion;
+use App\Http\Middleware\Administrador;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Middleware\Autenticacion;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('index');
@@ -35,4 +37,5 @@ Route::get('/logout',[UserController::class,"Logout"]);
 
 Route::get('/privado', function() {
     return view('privado');
-}) -> middleware(Autenticacion::class);
+}) -> middleware(Autenticacion::class)
+    -> middleware(Administrador::class);

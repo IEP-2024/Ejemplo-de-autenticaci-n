@@ -13,6 +13,13 @@
     Name <input type="text" name="name"> <br>
     Email <input type="email" name="email"> <br>
     Password <input type="password" name="password"> <br>
+    Tipo 
+
+    <select name="tipo">
+        <option value="1">Basico</option>
+        <option value="2">Avanzado</option>
+    </select> 
+    <br>
     <button type="submit">Sign Up</button>
     </form>
 </body>
